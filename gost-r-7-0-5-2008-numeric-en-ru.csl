@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en" version="1.0" 
 demote-non-dropping-particle="sort-only" page-range-format="expanded">
 	<info>
 		<title>Russian GOST R 7.0.5-2008 (numeric) En+Ru</title>
 		<id>http://www.zotero.org/styles/gost-r-7-0-5-2008-numeric-en-ru</id>
-		<link href="http://www.zotero.org/styles/gost-r-7-0-5-2008-numeric-en-ru" rel="self"/>
+		<!-- <link href="http://www.zotero.org/styles/gost-r-7-0-5-2008-numeric-en-ru" rel="self"/> -->
 		<author>
 			<name>Yurkin Maxim</name>
 			<email>yurkin@gmail.com</email>
@@ -16,17 +16,17 @@ demote-non-dropping-particle="sort-only" page-range-format="expanded">
 		</contributor>
 		<category field="generic-base"/>
 		<category citation-format="numeric"/>
-		<published>2010-03-22T10:40:00+06:00</published>
-		<updated>2011-07-22T10:46:50-07:00</updated>
+		<!-- <published>2010-03-22T10:40:00+06:00</published> -->
+		<updated>2011-07-26T11:12:43-07:00</updated>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=173511" rel="documentation"/>
 		<summary>
 			This style was modified by Maxim Nazarenko to work with both English and Russian source in Multilangual Zotero.
 			Original description by Maxim Yurkin follows.
-		
-		    This style is independent from style "GOST-R-7.0.5-2008", and the main difference is that this
+
+			This style is independent from style "GOST-R-7.0.5-2008", and the main difference is that this
 			is numeric contrary to author-date. The structure of these two styles is also very different.
 			!!! IMPORTANT !!! Citations are numeric, order of bibliography is in order of citations, default locale is 'en'.
-			
+
 			Стиль основан на ГОСТах 7.0.5-2008 и 7.1.2003. Основная проблема сейчас - это локализация терминов 
 			(С., Т., под ред.,и др. ... или соответственно P., Vol., ed., et al.). В принципе это работает и 
 			контроллируется полем  default-locale (выше, во второй строчке). Это определяет одни настройки для всей 
@@ -34,11 +34,11 @@ demote-non-dropping-particle="sort-only" page-range-format="expanded">
 			(как и предписывает ГОСТ). Это невозможно сделать в рамках Zotero 2.1 и CSL 1.0, но уже сейчас что-то можно 
 			сделать в рамках MultiLingual Zotero - см. например 
 			http://forums.zotero.org/discussion/18482/multilingual-zotero-fields-and-csl-variables.
-			
+
 			Также существует проблема с локализацией порядковых числительных. Она минимально работает, но русская 
 			локализация не может учесть род существительного, к которому это числительное относится (например, 
 			"изд." или "вып."), поэтому всё равно криво. И совсем неясно, как это можно исправить.
-			
+
 			И последнее, патенты по умолчанию представлены как USA, поскольку в CSL 1.0 нет переменной, соответствующей 
 			полю country в базе Zotero 2.1. Надеюсь, это будет исправлено в будущих версиях.</summary>
 		<rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 Unported License 
@@ -55,8 +55,10 @@ demote-non-dropping-particle="sort-only" page-range-format="expanded">
 	</locale>
 	<locale xml:lang="en">
 		<terms>
-			<term name="online">electronic resource</term> <!-- not exactly the correct term, but the most suitable one -->
-			<term name="letter" form="short">pat.</term> <!-- using completely irrelevant term to localize "pat." -->
+			<term name="online">electronic resource</term>
+			<!-- not exactly the correct term, but the most suitable one -->
+			<term name="letter" form="short">pat.</term>
+			<!-- using completely irrelevant term to localize "pat." -->
 		</terms>
 	</locale>
 	<locale xml:lang="ru">
@@ -70,8 +72,8 @@ demote-non-dropping-particle="sort-only" page-range-format="expanded">
 		</terms>
 	</locale>
 	<!-- Macros -->
-	<macro name="editor">
-		<names variable="editor">
+	<macro name="editor-translator">
+		<names variable="editor translator" delimiter="; ">
 			<label form="verb-short" suffix=" "/>
 			<name name-as-sort-order="all" sort-separator=" " initialize-with="." delimiter=", " delimiter-precedes-last="always"/>
 		</names>
@@ -83,7 +85,8 @@ demote-non-dropping-particle="sort-only" page-range-format="expanded">
 	</macro>
 	<macro name="title">
 		<choose>
-			<if type="webpage"> <!-- adds "[Electronic resource]" or Russian equivalent after the title-->
+			<if type="webpage">
+				<!-- adds "[Electronic resource]" or Russian equivalent after the title-->
 				<text variable="title" suffix=" "/>
 				<text term="online" text-case="sentence" prefix="[" suffix="]"/>
 			</if>
@@ -105,7 +108,8 @@ demote-non-dropping-particle="sort-only" page-range-format="expanded">
 			</else>
 		</choose>
 	</macro>
-	<macro name="type-number"> <!-- document type and number (thesis, patent, report, thesis, manuscript,...) -->
+	<macro name="type-number">
+		<!-- document type and number (thesis, patent, report, thesis, manuscript,...) -->
 		<choose>
 			<if type="patent">
 				<text term="letter" form="short"/>
@@ -113,7 +117,8 @@ demote-non-dropping-particle="sort-only" page-range-format="expanded">
 				However, it is not clear how it will be localized -->
 				<text variable="number" prefix=" " suffix=" USA"/>
 			</if>
-			<else> <!-- this is used for entries like 'Report', 'PhD thesis', 'submitted to ...' (for manuscripts) -->
+			<else>
+				<!-- this is used for entries like 'Report', 'PhD thesis', 'submitted to ...' (for manuscripts) -->
 				<group delimiter=" ">
 					<text variable="genre"/>
 					<text variable="number"/>
@@ -121,7 +126,8 @@ demote-non-dropping-particle="sort-only" page-range-format="expanded">
 			</else>
 		</choose>
 	</macro>
-	<macro name="publisher"> <!-- includes place -->
+	<macro name="publisher">
+		<!-- includes place -->
 		<group delimiter=": ">
 			<text variable="publisher-place"/>
 			<text variable="publisher"/>
@@ -132,7 +138,8 @@ demote-non-dropping-particle="sort-only" page-range-format="expanded">
 			<date-part name="year"/>
 		</date>
 	</macro>
-	<macro name="locators"> <!-- volume and issue -->
+	<macro name="locators">
+		<!-- volume and issue -->
 		<group delimiter=", ">
 			<group delimiter=" ">
 				<text term="volume" form="short" text-case="sentence"/>
@@ -144,7 +151,8 @@ demote-non-dropping-particle="sort-only" page-range-format="expanded">
 			</group>
 		</group>
 	</macro>
-	<macro name="page"> <!-- it is assumed that fields "page" and "# of Pages" do not exist simultaneously -->
+	<macro name="page">
+		<!-- it is assumed that fields "page" and "# of Pages" do not exist simultaneously -->
 		<group delimiter=" ">
 			<label variable="page" form="short" text-case="sentence" plural="never"/>
 			<text variable="page"/>
@@ -154,22 +162,23 @@ demote-non-dropping-particle="sort-only" page-range-format="expanded">
 			<text term="page" form="short"/>
 		</group>
 	</macro>
-	<macro name="access"> <!-- only for webpages -->
+	<macro name="access">
+		<!-- only for webpages -->
 		<choose>
 			<if type="webpage">
 				<choose>
-				<if variable="URL">
-					<text variable="URL" prefix="URL: "/>
-					<group prefix=" (" suffix=")" delimiter=": ">
-						<text term="accessed"/>
-						<!-- localized date is not used here, since we prefer the Russian date style for entries of all languages -->
-						<date variable="accessed">
-							<date-part name="day" suffix="." form="numeric-leading-zeros"/>
-							<date-part name="month" suffix="." form="numeric-leading-zeros"/>
-							<date-part name="year"/>
-						</date>
-					</group>
-				</if>
+					<if variable="URL">
+						<text variable="URL" prefix="URL: "/>
+						<group prefix=" (" suffix=")" delimiter=": ">
+							<text term="accessed"/>
+							<!-- localized date is not used here, since we prefer the Russian date style for entries of all languages -->
+							<date variable="accessed">
+								<date-part name="day" suffix="." form="numeric-leading-zeros"/>
+								<date-part name="month" suffix="." form="numeric-leading-zeros"/>
+								<date-part name="year"/>
+							</date>
+						</group>
+					</if>
 				</choose>
 			</if>
 		</choose>
@@ -196,87 +205,108 @@ demote-non-dropping-particle="sort-only" page-range-format="expanded">
 		ответственности", т.е. после названия. Сделать такой перенос, по-крайней мере, нетривиально,
 		поэтому в этом стиле авторы всегда указываются вначале -->
 	<bibliography et-al-min="4" et-al-use-first="1" entry-spacing="0" second-field-align="flush">
-	
-		<layout locale="en" suffix=".">
+
+		<layout suffix="." locale="en">
 			<text variable="citation-number" suffix=". "/>
 			<!-- Комментарии ниже даны в соответствии с терминами, определёнными в ГОСТе -->
 			<group delimiter=". ">
 				<group>
 					<group delimiter=". ">
-						<text macro="author"/> <!-- Заголовок с указанием авторов -->
-						<text macro="title"/> <!-- Заглавие -->
+						<text macro="author"/>
+						<!-- Заголовок с указанием авторов -->
+						<text macro="title"/>
+						<!-- Заглавие -->
 					</group>
-					<text macro="type-number" prefix=": "/> <!-- Сведения, относящиеся к заглавию -->
+					<text macro="type-number" prefix=": "/>
+					<!-- Сведения, относящиеся к заглавию -->
 					<text variable="container-title" form="short" prefix=" // "/>
-					<text macro="edition" prefix=". "/> <!-- Издание -->
-					<!-- предполагается, что редакторы относятся к конкретному изданию, 
+					<text macro="edition" prefix=". "/>
+					<!-- Издание -->
+					<!-- предполагается, что редакторы и переводчики относятся к конкретному изданию, 
 					поэтому	указываются после номера издания -->
-					<text macro="editor" prefix=" / "/><!-- Ответственность -->
+					<text macro="editor-translator" prefix=" / "/>
+					<!-- Ответственность -->
 				</group>
-				<group delimiter=", "> <!-- Выходные данные -->
+				<group delimiter=", ">
+					<!-- Выходные данные -->
 					<text macro="publisher"/>
 					<text macro="issued-year"/>
 				</group>
 				<!-- Сведения о местоположении составной части в документе или физические характеристики -->
 				<text macro="locators"/>
 				<text macro="page"/>
-				<text macro="access"/> <!-- URL -->
+				<text macro="access"/>
+				<!-- URL -->
 			</group>
 		</layout>
-		
-		<layout locale="ru" suffix=".">
+
+		<layout suffix="." locale="ru">
 			<text variable="citation-number" suffix=". "/>
 			<!-- Комментарии ниже даны в соответствии с терминами, определёнными в ГОСТе -->
 			<group delimiter=". ">
 				<group>
 					<group delimiter=". ">
-						<text macro="author"/> <!-- Заголовок с указанием авторов -->
-						<text macro="title"/> <!-- Заглавие -->
+						<text macro="author"/>
+						<!-- Заголовок с указанием авторов -->
+						<text macro="title"/>
+						<!-- Заглавие -->
 					</group>
-					<text macro="type-number" prefix=": "/> <!-- Сведения, относящиеся к заглавию -->
+					<text macro="type-number" prefix=": "/>
+					<!-- Сведения, относящиеся к заглавию -->
 					<text variable="container-title" form="short" prefix=" // "/>
-					<text macro="edition" prefix=". "/> <!-- Издание -->
-					<!-- предполагается, что редакторы относятся к конкретному изданию, 
+					<text macro="edition" prefix=". "/>
+					<!-- Издание -->
+					<!-- предполагается, что редакторы и переводчики относятся к конкретному изданию, 
 					поэтому	указываются после номера издания -->
-					<text macro="editor" prefix=" / "/><!-- Ответственность -->
+					<text macro="editor-translator" prefix=" / "/>
+					<!-- Ответственность -->
 				</group>
-				<group delimiter=", "> <!-- Выходные данные -->
+				<group delimiter=", ">
+					<!-- Выходные данные -->
 					<text macro="publisher"/>
 					<text macro="issued-year"/>
 				</group>
 				<!-- Сведения о местоположении составной части в документе или физические характеристики -->
 				<text macro="locators"/>
 				<text macro="page"/>
-				<text macro="access"/> <!-- URL -->
+				<text macro="access"/>
+				<!-- URL -->
 			</group>
 		</layout>
-	
+
 		<layout suffix=".">
 			<text variable="citation-number" suffix=". "/>
 			<!-- Комментарии ниже даны в соответствии с терминами, определёнными в ГОСТе -->
 			<group delimiter=". ">
 				<group>
 					<group delimiter=". ">
-						<text macro="author"/> <!-- Заголовок с указанием авторов -->
-						<text macro="title"/> <!-- Заглавие -->
+						<text macro="author"/>
+						<!-- Заголовок с указанием авторов -->
+						<text macro="title"/>
+						<!-- Заглавие -->
 					</group>
-					<text macro="type-number" prefix=": "/> <!-- Сведения, относящиеся к заглавию -->
+					<text macro="type-number" prefix=": "/>
+					<!-- Сведения, относящиеся к заглавию -->
 					<text variable="container-title" form="short" prefix=" // "/>
-					<text macro="edition" prefix=". "/> <!-- Издание -->
-					<!-- предполагается, что редакторы относятся к конкретному изданию, 
+					<text macro="edition" prefix=". "/>
+					<!-- Издание -->
+					<!-- предполагается, что редакторы и переводчики относятся к конкретному изданию, 
 					поэтому	указываются после номера издания -->
-					<text macro="editor" prefix=" / "/><!-- Ответственность -->
+					<text macro="editor-translator" prefix=" / "/>
+					<!-- Ответственность -->
 				</group>
-				<group delimiter=", "> <!-- Выходные данные -->
+				<group delimiter=", ">
+					<!-- Выходные данные -->
 					<text macro="publisher"/>
 					<text macro="issued-year"/>
 				</group>
 				<!-- Сведения о местоположении составной части в документе или физические характеристики -->
 				<text macro="locators"/>
 				<text macro="page"/>
-				<text macro="access"/> <!-- URL -->
+				<text macro="access"/>
+				<!-- URL -->
 			</group>
 		</layout>
-		
+
 	</bibliography>
 </style>
